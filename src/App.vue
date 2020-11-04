@@ -1,28 +1,45 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+   <Preloader/>
+    <Product v-for="index in count" :key="index" :productCounter="count-1"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Product from './components/product.vue'
+import Preloader from './components/preloader.vue'
+
 
 export default {
+  data(){
+      return{
+           count:1
+      }
+
+  },
+    /*Отображение 20 товаров*/
+  beforeMount(){
+    this.interval = setInterval(() => {
+        if(this.count < 20){
+            this.count++
+        }
+    },1)
+  },
   name: 'App',
   components: {
-    HelloWorld
+    Product,
+    Preloader,
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
 }
+
+    @import '../src/style/css/style.css';
 </style>

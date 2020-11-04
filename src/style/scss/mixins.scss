@@ -1,0 +1,11 @@
+@mixin flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+@mixin transition{
+    transition:background-color .2s linear;
+}
+
